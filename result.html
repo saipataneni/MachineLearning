@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        p {
+            margin: 5px 0 15px 0;
+            color: #555;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #e6f7ff;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .section {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Price Prediction</h1>
+        <div class="section">
+            <img src="data:image/png;base64,{{ image }}" alt="Stock Prediction Plot">
+        </div>
+        <div class="section">
+            <h2>Prediction Accuracy</h2>
+            <p>Accuracy: {{ accuracy }}%</p>
+            <p>Precision: {{ precision }}%</p>
+        </div>
+        <div class="section">
+            <h2>Stock Analysis</h2>
+            <p>Rate of Change in the Last Year: {{ rate_of_change }}%</p>
+            <p>Predicted Growth Rate for the Next {{ years }} Years: {{ growth_rate }}%</p>
+            <p>Investibility: <strong>{{ investible }}</strong></p>
+        </div>
+        <div class="section">
+            <h3>Monthly Predicted Values</h3>
+            <ul>
+                {% for date, value in monthly_predictions %}
+                    <li>{{ date.strftime('%Y-%m-%d') }}: {{ value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
